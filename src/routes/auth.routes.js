@@ -4,16 +4,16 @@ const authValidator= require('../validators/auth-validator')
 
 const authRoutes=[
     {
-        url:'/register',
+        url:'/auth/register',
         method:'POST',
         preHandler: authValidator.registerValidator,
         handler: userController.registerController
     },
     {
-        url:'/login',
+        url:'/auth/login',
         method:'POST',
         handler: userController.loginController
     }
 ]
 
-module.exports= authRoutes;
+module.exports= authRoutes

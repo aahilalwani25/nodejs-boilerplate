@@ -1,6 +1,6 @@
 const { hash } = require("bcrypt");
 
-export const encryptPassword=async(password)=>{
+const encryptPassword=async(password)=>{
     const saltRounds=10;
     try{
         const hashedPassword=await hash(password,saltRounds);
@@ -10,3 +10,5 @@ export const encryptPassword=async(password)=>{
         console.error(error)
     }
 }
+
+module.exports= {encryptPassword}

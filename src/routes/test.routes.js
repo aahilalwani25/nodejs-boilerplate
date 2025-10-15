@@ -1,4 +1,4 @@
-const testController = require("../controllers/test-controller");
+const testController = require("../controllers/test.controller");
 
 const testRoute=[
     {

@@ -1,7 +1,8 @@
 {
   "name": "e-commerce-ads-backend",
   "version": "1.0.0",
-  "description": "A backend for Furniture Inventory",
+  "description": "A backend for E-Commerce",
+  "type": "commonjs",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

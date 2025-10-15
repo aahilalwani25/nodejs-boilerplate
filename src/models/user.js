@@ -5,7 +5,9 @@ const { encryptPassword } = require("../utils/encrypt-password");
 const User = sequelize.define("user", {
   user_id: {
     type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
+    unique: true,
   },
   name: {
     type: DataTypes.STRING,
@@ -25,7 +27,8 @@ const User = sequelize.define("user", {
     }
   },
   password: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+
   },
   created_at: {
     type: DataTypes.DATE,
@@ -37,6 +40,10 @@ const User = sequelize.define("user", {
     defaultValue: DataTypes.NOW,
     allowNull: false,
   },
+}, {
+  defaultScope: {
+    attributes: { exclude: ['password'] }
+  }
 });
 
 User.addHook('beforeCreate', (user, options) => {
