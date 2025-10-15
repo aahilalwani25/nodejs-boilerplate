@@ -1,4 +1,4 @@
-const authService= require('../services/auth-service')
+const authService= require('../services/auth.service')
 
 const registerController=async(req,res)=>{
     const result= await authService.register(req.body)

@@ -1,5 +1,5 @@
 //all routes will be gathered here
-const userController = require('../controllers/auth-controller')
+const userController = require('../controllers/auth.controller')
 const authValidator= require('../validators/auth-validator')
 
 const authRoutes=[
