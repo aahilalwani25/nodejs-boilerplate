@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const {sequelize} = require('../../config/pgSqlConfig');
+const {sequelize} = require('../../config/pg-config');
 const user = require('./user');
 
 const order= sequelize.define('order',{

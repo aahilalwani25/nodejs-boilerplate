@@ -1,6 +1,6 @@
 //all routes will be gathered here
-const testRoute = require('./testRoutes');
-const authRoutes = require('./authRoutes')
+const testRoute = require('./test-routes');
+const authRoutes = require('./auth-routes')
 
 const routes=[
     ...authRoutes,

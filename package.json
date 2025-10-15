@@ -1,22 +1,25 @@
 {
-  "name": "furni-pro-360-backend",
+  "name": "e-commerce-ads-backend",
   "version": "1.0.0",
   "description": "A backend for Furniture Inventory",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./server.js"
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:seed:all": "sequelize-cli db:seed:all",
+    "db:setup": "yarn db:migrate && yarn db:seed:all",
+    "start": "yarn db:setup && nodemon server.js"
   },
   "keywords": [
-    "furniPro360",
-    "furni-pro-360"
+    "e-commerce-ads",
+    "e-commerce-ads"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rayyansajid/furniPro360-Backend.git"
+    "url": "https://github.com/aahilalwani25/e-commerce-ads-backend.git"
   },
   "bugs": {
-    "url": "https://github.com/rayyansajid/furniPro360-Backend/issues"
+    "url": "https://github.com/aahilalwani25/e-commerce-ads-backend/issues"
   },
   "author": "Aahil Alwani",
   "license": "ISC",

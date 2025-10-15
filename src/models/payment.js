@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const {sequelize} = require('../../config/pgSqlConfig');
+const {sequelize} = require('../../config/pg-config');
 const order = require('./order');
 
 const payment= sequelize.define('payment',{

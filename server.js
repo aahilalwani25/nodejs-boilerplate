@@ -2,9 +2,9 @@ const fastify = require('fastify')({
     logger: true
 })
 const cors = require('@fastify/cors')
-const routes = require('./src/routes/mainRoutes')
+const routes = require('./src/routes/main-routes')
 const dotenv = require('dotenv')
-const { syncModels } = require('./src/utils/syncModels')
+const { syncModels } = require('./src/utils/sync-models')
 dotenv.config()
 
 fastify.register(cors,{
@@ -20,12 +20,12 @@ routes.forEach(route=>{
 syncModels();
 
 fastify.listen({
-    port: process.env.SERVER_PORT,
+    port: process.env.PORT,
     host: process.env.SERVER_HOST,
 },(err,address)=>{
     if(err){
         fastify.log.error(err);
         process.exit(1)
     }
-    console.log(`server is running on port: ${process.env.SERVER_PORT}`)
+    console.log(`server is running on port: ${process.env.PORT}`)
 })

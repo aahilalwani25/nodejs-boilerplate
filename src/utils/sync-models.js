@@ -1,6 +1,7 @@
-const {sequelize} = require('../../config/pgSqlConfig')
+const {sequelize} = require('../../config/pg-config')
 
-sequelize.options.logging = console.log;
+
+//sequelize = console.log;
 
 
 async function syncModels() {

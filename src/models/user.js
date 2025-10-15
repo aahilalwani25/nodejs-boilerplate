@@ -1,7 +1,8 @@
 const { DataTypes } = require("sequelize");
-const { sequelize } = require("../../config/pgSqlConfig");
+const { sequelize } = require("../../config/pg-config");
+const { encryptPassword } = require("../utils/encrypt-password");
 
-const user = sequelize.define("user", {
+const User = sequelize.define("user", {
   user_id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -10,21 +11,8 @@ const user = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  phone: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  address: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  gender: {
-    type: DataTypes.ENUM("male", "female"),
-    defaultValue: "male",
-    allowNull: false,
-  },
   user_role: {
-    type: DataTypes.ENUM("customer", "supplier", "admin"),
+    type: DataTypes.ENUM("customer", "admin"),
     allowNull: false,
     defaultValue: "customer",
   },
@@ -32,6 +20,12 @@ const user = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
+    validate: {
+      isEmail: true
+    }
+  },
+  password: {
+    type: DataTypes.STRING
   },
   created_at: {
     type: DataTypes.DATE,
@@ -45,4 +39,10 @@ const user = sequelize.define("user", {
   },
 });
 
-module.exports = user;
+User.addHook('beforeCreate', (user, options) => {
+  if (user.password) {
+    user.password = encryptPassword(user.password);
+  }
+})
+
+module.exports = User;
