@@ -1,19 +1,19 @@
-//all routes will be gathered here
 const userController = require('../controllers/auth.controller')
-const authValidator= require('../validators/auth-validator')
+const authValidator = require('../validators/auth.validator')
 
-const authRoutes=[
+const authRoutes = [
     {
-        url:'/auth/register',
-        method:'POST',
+        url: '/auth/register',
+        method: 'POST',
         preHandler: authValidator.registerValidator,
         handler: userController.registerController
     },
     {
-        url:'/auth/login',
-        method:'POST',
+        url: '/auth/login',
+        method: 'POST',
+        preHandler: authValidator.loginValidator,
         handler: userController.loginController
     }
 ]
 
-module.exports= authRoutes
+module.exports = authRoutes

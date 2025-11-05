@@ -1,5 +1,7 @@
-import { compare } from "bcrypt"
+const { compare } = require("bcrypt");
 
-export const comparePassword= async(userPassword,dbPassword)=>{
-    await compare(userPassword,dbPassword)
+const comparePassword = async (userPassword, hashedPassword) => {
+    return await compare(userPassword, hashedPassword)
 }
+
+module.exports = { comparePassword }

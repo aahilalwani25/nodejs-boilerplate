@@ -5,4 +5,12 @@ const register = async (body) => {
     return result;
 }
 
-module.exports={register}
+const login = async (body) => {
+    const result = await userService?.loginUser({
+        email: body.email,
+        password: body.password,
+    });
+    return result;
+}
+
+module.exports = { register, login }

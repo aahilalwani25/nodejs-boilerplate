@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../../config/pg-config");
 const { encryptPassword } = require("../utils/encrypt-password");
+const { comparePassword } = require("../utils/compare-password");
 
 const User = sequelize.define("user", {
   user_id: {
@@ -46,10 +47,25 @@ const User = sequelize.define("user", {
   }
 });
 
+
+// create a hashed password before inserting it into DB
 User.addHook('beforeCreate', (user, options) => {
   if (user.password) {
     user.password = encryptPassword(user.password);
   }
-})
+});
+
+
+//this is for password validation (during login or any sort of authentication)
+User.prototype.validatePassword = async (password) => {
+  return await comparePassword(password, this.password)
+}
+
+//for updation hook
+User.addHook('beforeUpdate', async (user) => {
+  if (user.changed('password')) {
+    user.password = encryptPassword(user.password);
+  }
+});
 
 module.exports = User;
