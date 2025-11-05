@@ -98,7 +98,7 @@ Update config/ to include migration settings (database, host, port).
 
 ## 🙋 Contact
 
-Created by Aahil Alwani
+Created by [Aahil Alwani](https://aahil-portfolio-website.vercel.app/)
  — feel free to connect!
 
 
